@@ -13,16 +13,72 @@
           <div class="question--heading">
             <h1>1. How much of your condo needs painting?</h1>
           </div>
-          <div class="question-options__wrapper">
-            <div class="question-option">
-              <p>1 Bedroom</p>
+          <div class="question--options__wrapper" id='paintOptions'>
+            <div class="question--option" role="radio" aria-checked="true">
+              <p>Whole Condo</p>
             </div>
-            <div class="question-option">
-              <p>2 Bedroom</p>
+            <div class="question--option">
+              <p>Specific Rooms</p>
             </div>
           </div>
         </div>
-      </div>
+        <!-- If Whole Condo Is Chosen -->
+        <div class="whole-condo-option" id="wholeCondoOption">
+          <div class="pricing-calc--question hide">
+            <div class="question--heading">
+              <h1>2. How large is your condo?</h1>
+            </div>
+            <div class="question--options__wrapper" id="condoSizes">
+              <div class="question--option">
+                <p>Bachelor</p>
+              </div>
+              <div class="question--option">
+                <p>1 Bedroom</p>
+              </div>
+              <div class="question--option">
+                <p>2 Bedroom</p>
+              </div>
+              <div class="question--option">
+                <p>3 Bedroom</p>
+              </div>
+            </div>
+            <div class="question--options__slider disabled" id="sliderWrapper">
+              <input
+              class="slider disabled"
+              id="slider"
+              type="range"
+              min="0"
+              max="100"
+              value="10"
+              disabled
+              oninput="rangeValue.innerText = this.value"
+            />
+            <p id="rangeValue">10</p>
+            </div>
+          </div>
+        </div>
+        <div class="single-rooms-option" id="singleRoomOption">
+          <div class="pricing-calc--question hide">
+            <div class="question--heading">
+              <h1>2. How many rooms do your require?</h1>
+            </div>
+            <div class="question--options__wrapper" id="condoSizes">
+              <div class="question--option">
+                <p>1 Room</p>
+              </div>
+              <div class="question--option">
+                <p>2 Rooms</p>
+              </div>
+              <div class="question--option">
+                <p>3 Rooms</p>
+              </div>
+              <div class="question--option">
+                <p>4 Rooms</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
     </div>
     <script src="script.js"></script>
   </body>

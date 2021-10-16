@@ -127,7 +127,7 @@ table {
 
 h1 {
   font-size: 2rem;
-  margin-bottom: 20px;
+  margin: 10px 0px;
 }
 
 .container {
@@ -143,26 +143,88 @@ h1 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 10px;
   color: white;
-  padding: 1.5rem;
   -webkit-box-shadow: 9px 10px 23px 0px rgba(0, 0, 0, 0.51);
   -moz-box-shadow: 9px 10px 23px 0px rgba(0, 0, 0, 0.51);
   box-shadow: 9px 10px 23px 0px rgba(0, 0, 0, 0.51);
-  background-color: #0093e9;
-  background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
+  background-color: #202120;
 }
 
-.question-options__wrapper {
+.pricing-calc--question {
+  width: 100%;
+}
+
+.question--options__wrapper {
   display: flex;
   justify-content: center;
 }
 
-.question-option {
-  width: 100%;
-  padding: 10px;
+.question--heading {
+  background-color: #2b2b2b;
+  padding: 20px;
+  margin: auto;
 }
 
-.question-option:hover {
-  background-color: #0093e9;
+.question--option {
+  width: 100%;
+  padding: 10px;
+  cursor: pointer;
+  height: 50px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+
+.question--option p {
+  margin: auto;
+  display: inline;
+  font-size: 1.2rem;
+  font-weight: 300;
+}
+
+.question--option:hover,
+.question--option:active {
+  background-color: #decc2f;
+  color: #202120;
+}
+.question--options__slider {
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.question--options__slider p {
+  padding-left: 30px;
+  color: #fff;
+}
+
+.question--option__selected {
+  background-color: #decc2f !important;
+  color: #202120 !important;
+}
+
+.slider {
+  -webkit-appearance: none !important;
+  background-color: #2b2b2b;
+  border-radius: 50px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50px;
+  background: #decc2f; /* Green background */
+  /* cursor: pointer; Cursor on hover */
+}
+
+.disabled {
+  opacity: 0.6;
+}
+
+.hide {
+  display: none;
 }
