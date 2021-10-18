@@ -130,6 +130,25 @@ h1 {
   margin: 10px 0px;
 }
 
+button {
+  width: 100%;
+  border: none;
+  background-color: #202120;
+  color: #fff;
+  height: 50px;
+  padding: 10px;
+  font-size: 1.2rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 200;
+  cursor: pointer;
+  text-align: center;
+}
+
+button:hover {
+  background-color: #decc2f;
+  color: #202120;
+}
+
 .container {
   height: 100vh;
   display: flex;
@@ -137,7 +156,7 @@ h1 {
 }
 
 .pricing-calc {
-  width: 750px;
+  width: 900px;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -182,11 +201,6 @@ h1 {
   font-weight: 300;
 }
 
-.question--option:hover,
-.question--option:active {
-  background-color: #decc2f;
-  color: #202120;
-}
 .question--options__slider {
   display: flex;
   align-items: center;
@@ -203,22 +217,44 @@ h1 {
   color: #202120 !important;
 }
 
+.question--option__info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.question--option__info > p {
+  font-size: 0.75rem;
+  margin: auto 5px;
+}
 .slider {
   -webkit-appearance: none !important;
-  background-color: #2b2b2b;
   border-radius: 50px;
   width: 100%;
   cursor: pointer;
+  margin: 20px 0;
 }
 
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none; /* Override default look */
   appearance: none;
-  width: 15px;
-  height: 15px;
-  border-radius: 50px;
+  width: 25px;
+  height: 25px;
+  margin-top: -5px;
+  border-radius: 50%;
   background: #decc2f; /* Green background */
   /* cursor: pointer; Cursor on hover */
+}
+
+.slider::-webkit-slider-thumb:hover {
+  background-color: #ffee51;
+}
+
+.slider::-webkit-slider-runnable-track {
+  height: 15px;
+  border-radius: 50px;
+  background: transparent;
 }
 
 .disabled {
@@ -227,4 +263,74 @@ h1 {
 
 .hide {
   display: none;
+}
+
+input[type="radio"] {
+  padding: 10px;
+  cursor: pointer;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  appearance: none;
+  background-color: #2b2b2b;
+  border: 2px solid white;
+}
+
+label {
+  margin: auto 5px;
+  text-align: start;
+}
+
+input[type="radio"]:hover,
+input[type="radio"]:checked {
+  background-color: #decc2f !important;
+  color: #202120 !important;
+}
+
+input[type="number"] {
+  width: 75px;
+  margin-left: 10px;
+}
+
+.total--wrapper {
+  height: 75px;
+  width: 100%;
+  display: flex;
+}
+
+.total--wrapper > div:first-child {
+  width: 40%;
+}
+
+.total--right-side {
+  width: 60%;
+}
+
+/* Checkboxes */
+
+.question--options__checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+input[type="checkbox"] {
+  appearance: none;
+  height: 30px;
+  width: 30px;
+  min-width: 30px;
+  background-color: #2b2b2b;
+  border-radius: 5px;
+  border: 2px solid #fff;
+  cursor: pointer;
+}
+
+input[type="checkbox"]:hover {
+  background-color: #fff;
+}
+input[type="checkbox"]:checked {
+  background-color: #decc2f !important;
+}
+
+.option--checkboxes {
+  width: 25% !important;
 }

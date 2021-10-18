@@ -14,33 +14,30 @@
             <h1>1. How much of your condo needs painting?</h1>
           </div>
           <div class="question--options__wrapper" id='paintOptions'>
-            <div class="question--option" role="radio" aria-checked="true">
-              <p>Whole Condo</p>
-            </div>
-            <div class="question--option">
-              <p>Specific Rooms</p>
-            </div>
+            <button class="btn" onclick="showWholeCondoOptions()">Whole Condo</button>
+            <button class="btn" onclick="showSingleRoomsOptions()">Specific Rooms</button>
           </div>
         </div>
         <!-- If Whole Condo Is Chosen -->
-        <div class="whole-condo-option" id="wholeCondoOption">
-          <div class="pricing-calc--question hide">
+        <div class="whole-condo-option hide" id="wholeCondoOption" style="width: 100%;">
+          <div class="pricing-calc--question">
             <div class="question--heading">
               <h1>2. How large is your condo?</h1>
             </div>
             <div class="question--options__wrapper" id="condoSizes">
-              <div class="question--option">
-                <p>Bachelor</p>
-              </div>
-              <div class="question--option">
+
+              <button class="question--option" onclick="sliderSquareFootage(500, this)" value="Bachelor" name="condoRooms"><p>Bachelor</p></button>
+ 
+      
+              <button class="question--option" onclick="sliderSquareFootage(750, this)" value="1 Bedroom" name="condoRooms">
                 <p>1 Bedroom</p>
-              </div>
-              <div class="question--option">
+              </button>
+              <button class="question--option" onclick="sliderSquareFootage(1000, this)" name="condoRooms">
                 <p>2 Bedroom</p>
-              </div>
-              <div class="question--option">
+              </button>
+              <button class="question--option" onclick="sliderSquareFootage(1250, this)" name="condoRooms">
                 <p>3 Bedroom</p>
-              </div>
+              </button>
             </div>
             <div class="question--options__slider disabled" id="sliderWrapper">
               <input
@@ -48,38 +45,183 @@
               id="slider"
               type="range"
               min="0"
-              max="100"
-              value="10"
+              max="3500"
+              value="300"
               disabled
-              oninput="rangeValue.innerText = this.value"
+              name="condoSize"
+              onchange="changeSliderColor()"
+              oninput="changeSliderColor()"
             />
-            <p id="rangeValue">10</p>
+            <input type="number" name="rangeValue" id="rangeValue" value="300">
+            </div>
+          </div>
+          <div class="pricing-calc--question hide">
+            <div class="question--heading">
+              <h1>3. What kind of paint job do you need</h1>
+            </div>
+            <div class="question--options__wrapper" id="condoSizes">
+              <div class="question--option">
+                <input type="radio" name="paintJob" id="colorRefresh" onclick="showNextQuestion(this)" >
+                <div class="question--option__info">
+                  <label for="colorRefresh"> Refresh Existing Colours
+                    </label>
+                    <p id="refreshPrice">$1,000</p>
+                </div>
+              </div>
+              <div class="question--option">
+                <input type="radio" name="paintJob" id="colorChange" class="visually-hidden" value="colour" onclick="showNextQuestion(this)" >
+                <div class="question--option__info">
+                  <label for="colorChange"> Colour Change
+                  </label>
+                  <p id="colorChangePrice">$750.00</p>
+                </div>
+              </div>
+            </div>
+        </div>
+          <div class="pricing-calc--question hide">
+            <div class="question--heading">
+              <h1>4. Do you want help picking colours?</h1>
+            </div>
+            <div class="question--options__wrapper" id="condoSizes">
+              <div class="question--option">
+                <input type="radio" name="colorHelp" id="yesColorHelp" onclick="showNextQuestion(this)" value="199">
+                <div class="question--option__info">
+                  <label for="yesColorHelp"> Yes, I would like a professional consultation to help pick colours
+                    </label>
+                    <p id="yesColorHelpPrice">$199.00</p>
+                </div>
+              </div>
+              <div class="question--option">
+                <input type="radio" name="colorHelp" id="noColorHelp" onclick="showNextQuestion(this)" value="0">
+                <div class="question--option__info">
+                  <label for="noColorHelp"> No, I am ok picking my own colours
+                    </label>
+                    <p id="yesColorHelpPrice">$0.00</p>
+                </div>
+              </div>
+            </div>
+        </div>
+          <div class="pricing-calc--question hide">
+            <div class="question--heading">
+              <h1>5. Do you need it painted on a specific date?</h1>
+            </div>
+            <div class="question--options__wrapper" id="condoSizes">
+              <div class="question--option">
+                <input type="radio" name="preferredDate" id="noDate"  value='.05' onclick="showNextQuestion(this)">
+                <div class="question--option__info">
+                  <label for="noDate"> No, I'm flexible
+                    </label>
+                  <p id="noPreferredDatePrice">5% OFF</p>
+                </div>
+              </div>
+              <div class="question--option">
+                <input type="radio" name="preferredDate" id="yesDate"  value="0" onclick="showNextQuestion(this)">
+                <div class="question--option__info">
+                  <label for="yesDate"> Yes, I need it painted on/by a specific date
+                    </label>
+                    <p id="yesPreferredDatePrice">$0.00</p>
+                </div>
+              </div>
+            </div>
+        </div>
+          <div class="pricing-calc--question hide">
+            <div class="question--heading">
+              <h1>6. Would you like your condo sanitized?</h1>
+            </div>
+            <div class="question--options__wrapper" id="condoSizes">
+              <div class="question--option">
+                <input type="radio" name="sanitized" id="yesSanitized"  value='199' onclick="showNextQuestion(this)">
+                <div class="question--option__info">
+                  <label for="yesSanitized"> Yes, I would like my condo sanitized
+                    </label>
+                  <p id="noPreferredDatePrice">$199.00</p>
+                </div>
+              </div>
+              <div class="question--option">
+                <input type="radio" name="sanitized" id="noSanitized"  value="0" onclick="showNextQuestion(this)">
+                <div class="question--option__info">
+                  <label for="noSanitized"> No
+                    </label>
+                    <p id="yesPreferredDatePrice">$0.00</p>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="pricing-calc--question hide">
+          <div class="question--heading">
+            <h1>7. What else would you like us to paint?</h1>
+          </div>
+          <div class="question--options__checkboxes" id='condoSizes'>
+            <div class="question--option option--checkboxes">
+              <input type="checkbox" name="additionalOptions" id="baseboards" value="399">
+              <div class="question--option__info">
+                <label for="baseboards">Baseboards</label>
+                <p id="baseboardsPrice">$399.00</p>
+              </div>
+            </div>
+            <div class="question--option option--checkboxes">
+              <input type="checkbox" name="additionalOptions" id="doorsAndFrames" value="399">
+              <div class="question--option__info">
+                <label for="doorsAndFrames">Doors & Frames</label>
+                <p id="doorsAndFramesPrice">$75.00 each</p>
+              </div>
+            </div>
+            <div class="question--option option--checkboxes">
+              <input type="checkbox" name="additionalOptions" id="ceiling" value="549">
+              <div class="question--option__info">
+                <label for="ceiling">Ceiling</label>
+                <p id="ceilingPrice">$549.00 each</p>
+              </div>
+            </div>
+            <div class="question--option option--checkboxes">
+              <input type="checkbox" name="additionalOptions" id="higherWalls" value="275">
+              <div class="question--option__info">
+                <label for="higherWalls">10'+ Higher Walls / Ceilings</label>
+                <p id="higherWallsPrice">$275.00</p>
+              </div>
+            </div>
+            <div class="question--option option--checkboxes">
+              <input type="checkbox" name="additionalOptions" id="crownMolding" value="499">
+              <div class="question--option__info">
+                <label for="crownMolding">Crown Molding</label>
+                <p id="crownMoldingPrice">$499.00</p>
+              </div>
             </div>
           </div>
         </div>
-        <div class="single-rooms-option" id="singleRoomOption">
-          <div class="pricing-calc--question hide">
+      </div>
+        <!-- If Specific Rooms Are Chosen  -->
+        <div class="single-rooms-option hide" id="singleRoomOption" style="width: 100%;">
+          <div class="pricing-calc--question">
             <div class="question--heading">
               <h1>2. How many rooms do your require?</h1>
             </div>
             <div class="question--options__wrapper" id="condoSizes">
-              <div class="question--option">
+              <button class="question--option">
                 <p>1 Room</p>
-              </div>
-              <div class="question--option">
+              </button>
+              <button class="question--option">
                 <p>2 Rooms</p>
-              </div>
-              <div class="question--option">
+              </button>
+              <button class="question--option">
                 <p>3 Rooms</p>
-              </div>
-              <div class="question--option">
+              </button>
+              <button class="question--option">
                 <p>4 Rooms</p>
-              </div>
+              </button>
             </div>
           </div>
         </div>
+        <!-- Total -->
+        <div class="total--wrapper">
+          <div></div>
+          <div class="total--right-side">
+            <div class="airmiles"></div>
+            <div class="estimated-total" id="estimate"><span class="hide">$0.00</span></div>
+          </div>
+        </div>
 
-    </div>
+
     <script src="script.js"></script>
   </body>
 </html>
